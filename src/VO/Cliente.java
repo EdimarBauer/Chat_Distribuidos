@@ -7,25 +7,32 @@ package VO;
 
 /**
  *
- * @author dion
+ * @author Dion and Edimar
  */
 public class Cliente {
     private String ip;
-    private int port;
-    private String username;
+    private int porta;
+    private String nome;
+    private long ping;
     
-    public Cliente( String ip, int port, String username) {
-        this.port = port;
+    public Cliente( String ip, int porta, String nome) {
+        this.porta = porta;
         this.ip = ip;
-        this.username = username;        
+        this.nome = nome;        
+    }
+    
+    public void atualizar(String ip, int porta, String nome){
+        setIP(ip);
+        setPorta(porta);
+        setNome(nome);
     }
     
     public int getPorta() {
-        return port;
+        return porta;
     }
 
-    public void setPorta(int port) {
-        this.port = port;
+    public void setPorta(int porta) {
+        this.porta = porta;
     }
 
     public String getIP() {
@@ -37,11 +44,18 @@ public class Cliente {
     }
 
     public String getNome() {
-        return username;
+        return nome;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
     
+    public void setPing(long ping){
+        this.ping = ping;
+    }
+    
+    public long getPing(){
+        return ping;
+    }
 }

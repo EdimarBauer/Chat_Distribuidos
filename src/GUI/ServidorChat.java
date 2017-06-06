@@ -7,10 +7,12 @@ package GUI;
 
 import BO.ServidorBO;
 import VO.Servidor;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
- * @author dion
+ * @author Dion and Edimar
  */
 public class ServidorChat extends javax.swing.JFrame {
 
@@ -45,6 +47,7 @@ public class ServidorChat extends javax.swing.JFrame {
 
         jLabel1.setText("Porta");
 
+        jtfPorta.setText("20000");
         jtfPorta.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtfPortaKeyTyped(evt);
@@ -87,10 +90,13 @@ public class ServidorChat extends javax.swing.JFrame {
         if (porta >= 10000 && porta < 65000){
             Servidor servidor = new Servidor(porta);
             this.setVisible(false);
-            ServidorBO servidorBo = new ServidorBO(servidor);
+            try {
+                new ServidorBO(servidor);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(ServidorChat.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }else{
             System.out.println("Porta invalida. Digite entre 10 mil e 65 mil");
-            jtfPorta.setText("");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
